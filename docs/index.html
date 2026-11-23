@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Templates</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #f6f6f4; color: #111; }
+    main { max-width: 960px; margin: 0 auto; padding: 56px 16px; }
+    h1 { font-size: 2rem; margin: 0 0 8px; }
+    p { color: #555; margin: 0 0 32px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    a.card { display: block; color: inherit; text-decoration: none; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgb(0 0 0 / .06), 0 8px 24px rgb(0 0 0 / .06); }
+    a.card:hover, a.card:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+    a.card img { display: block; width: 100%; height: auto; }
+    a.card span { display: block; padding: 14px 16px; font-weight: 600; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #111; color: #eee; } p { color: #aaa; } a.card { background: #1b1b1b; }
+      a.card:hover, a.card:focus-visible { outline-color: #eee; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Portfolio Templates</h1>
+    <p>Two free React portfolio templates. Open a live demo below.</p>
+    <div class="grid">
+      <a class="card" href="./light/"><img src="./light-preview.jpg" alt="Light theme preview" width="800" height="533" /><span>Light theme</span></a>
+      <a class="card" href="./neobrutalism/"><img src="./neobrutalism-preview.jpg" alt="Neo-Brutalism theme preview" width="800" height="533" /><span>Neo-Brutalism theme</span></a>
+    </div>
+  </main>
+</body>
+</html>

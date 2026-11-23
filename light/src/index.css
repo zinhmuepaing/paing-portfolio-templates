@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 10% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 10% 15%;
+    --primary: 220 10% 15%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 10% 96%;
+    --secondary-foreground: 220 10% 15%;
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 10% 96%;
+    --accent-foreground: 220 10% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 10% 15%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 10% 10%;
+    --foreground: 210 20% 98%;
+    --card: 224 10% 12%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 10% 12%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 224 10% 10%;
+    --secondary: 215 14% 18%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 14% 18%;
+    --muted-foreground: 217 10% 64%;
+    --accent: 215 14% 18%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 14% 20%;
+    --input: 215 14% 20%;
+    --ring: 216 12% 84%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background: rgba(99, 102, 241, 0.25);
+  }
+}
+
+/* Fluid upscale for large monitors: the whole design is rem-based (Tailwind
+   spacing, max-widths, and type), so growing the root font size with the
+   viewport scales the entire composition proportionally instead of leaving a
+   narrow centered column. 16px up to the 1536px design width, then linear
+   with the viewport, capped at 24px so ultra-wides don't balloon. */
+@media (min-width: 1536px) {
+  html {
+    font-size: min(calc(100vw / 96), 24px);
+  }
+}
+
+/* Hide system scrollbars everywhere; Lenis (wheel/trackpad momentum) and
+   native touch scrolling still work. */
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Lenis: while smooth scrolling is active, native CSS smooth scrolling must
+   be off or programmatic scrolls fight the rAF loop. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Aurora backdrop drift (GPU-only transforms) */
+@keyframes aurora-drift-1 {
+  0% {
+    transform: translate3d(-8%, -4%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(10%, 8%, 0) scale(1.18);
+  }
+}
+@keyframes aurora-drift-2 {
+  0% {
+    transform: translate3d(6%, 10%, 0) scale(1.1);
+  }
+  100% {
+    transform: translate3d(-10%, -6%, 0) scale(0.92);
+  }
+}
+@keyframes aurora-drift-3 {
+  0% {
+    transform: translate3d(0%, 6%, 0) scale(0.95) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-6%, -10%, 0) scale(1.12) rotate(8deg);
+  }
+}
+
+@keyframes moveBackground {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -1000%;
+  }
+}
