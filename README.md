@@ -36,11 +36,10 @@ The contact form opens the visitor's email app with the message filled in. No ba
 
 ## Deploy
 
-Each folder is a normal static Vite site. Run `npm run build` and upload the `dist/` folder anywhere.
+Each folder is a normal static Vite site. Run `npm run build` inside it and upload the `dist/` folder to any static host.
 
 - **Vercel / Netlify**: import the repo and set the root directory to `light` or `neobrutalism`. Build command `npm run build`, output directory `dist`.
-- **GitHub Pages**: this repo includes `.github/workflows/deploy-demos.yml`, which builds both templates and publishes them as live demos. In your repo, go to **Settings → Pages** and set **Source** to **GitHub Actions**, then push to `main`. If you only keep one template, delete the other folder and its build step in the workflow.
-- **Project sites** (`username.github.io/repo-name/`) need the base path set at build time: `BASE_PATH=/repo-name/ npm run build`. Custom domains and user sites use the default `/`.
+- **Hosting under a sub-path** (for example `username.github.io/repo-name/`): set the base path when building, e.g. `BASE_PATH=/repo-name/ npm run build`. Custom domains and root URLs use the default `/`.
 
 The sites use hash routing (`/#/`), so they work on any static host without rewrite rules.
 
